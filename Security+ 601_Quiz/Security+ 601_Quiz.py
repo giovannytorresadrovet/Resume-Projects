@@ -24,6 +24,8 @@ questions = [
     Question("8. Which TCP/IP ports does SNMP usually use? \n", ["c"]),
     Question("9. Which version of SNMP makes sniffing management traffic difficult due to encryption? \n", ["b"]),
     Question("10. NetBIOS is used in older Windows systems for file and print sharing over a LAN. Which port dpes NetBIOS use? \n" ["d"]),
+    Question("11. The CEO recently decided that only a limited number of authorized company workstations will be able to connect to the internet via Wi-Fi enabled network. Which of the following would BEST accomplish this goal? \n", ["b"]),
+    Question("12. Which of the following does PTR map? \n", ["d"]),
     Question("75. A network operations manager has added a second row of server racks in the datacenter. These racks face the opposite direction of the first row of racks. Which of the following is the reason the manager installed the racks this way and why? \n", ["b"])
 ]
 
@@ -74,15 +76,27 @@ questions[8].add_answer("b. SNMPv2")
 questions[8].add_answer("c. SNMPv1")
 questions[8].add_answer("d. All of the above")
 
-questions[9].add_answer("a. To lower energy consumption by sharing power outlets")
-questions[9].add_answer("b. To create environmental hot and cold isles")
-questions[9].add_answer("c. To eliminate the potential for electromagnetic interference")
-questions[9].add_answer("d. To maximize fire suppression capabilities")
+questions[9].add_answer("a. Use content filtering")
+questions[9].add_answer("b. Enable MAC address filtering")
+questions[9].add_answer("c. Enable RAS on the network firewall")
+questions[9].add_answer("d. Install and configue IDS")
 
 questions[10].add_answer("a. 137")
 questions[10].add_answer("b. 138")
-questions[0].add_answer("c. 139")
-questions[0].add_answer("d. All of the above")
+questions[10].add_answer("c. 139")
+questions[10].add_answer("d. All of the above")
+
+questions[11].add_answer("a. MAC address to IP address")
+questions[11].add_answer("b. Host name to IP address")
+questions[11].add_answer("c. IP address to MAC address")
+questions[11].add_answer("d. IP address to host name")
+
+questions[74].add_answer("a. To lower energy consumption by sharing power outlets")
+questions[74].add_answer("b. To create environmental hot and cold isles")
+questions[74].add_answer("c. To eliminate the potential for electromagnetic interference")
+questions[74].add_answer("d. To maximize fire suppression capabilities")
+
+
 
 # Shuffle the questions
 random.shuffle(questions)
