@@ -6,6 +6,11 @@ questions = [
 },
 
 {
+    "prompt": "A VPN of five nodes uses symmetric encryption to transmit data securely, all sharing the same secret key. How many new keys would be needed to re-establish secure communications to all nodes if there is a key compromise? 	",
+    "options": ["A. 15", "B. 5", "C. 10", "D. 1"],
+    "answer": "A"
+},
+{
     "prompt": "Which of the following is NOT a common encryption algorithm?",
     "options": ["A. AES", "B. DES", "C. RSA", "D. MD5"],
     "answer": "D"
