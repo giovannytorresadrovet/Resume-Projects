@@ -6,15 +6,14 @@ import time
 import random
 from PIL import Image
 
+# Specify the path to your Mario face image (adjust this path accordingly)
+image_path = "C:/Users/giova/Downloads/mario_face.png"
+
 # Load the Mario face image
-image_path = r"C:\Users\giova\Downloads\mario_face.png"
-mario_image = Image.open("mario_face.png")
+mario_image = Image.open(image_path)
 
 # Display the image (optional)
 mario_image.show()
-
-except FileNotFoundError:
-    print(f"Image not found at path: {image_path}")
 
 #Start of Snake
 delay = 0.1
