@@ -22,16 +22,67 @@ def add_stock(stock_list):
 
 # Remove stock and all daily data
 def delete_stock(stock_list):
-    print("This method is under construction")
+    print("Delete Stock ---")
+    print("Stock List: [", end="")
+    for stock in stock_list:
+        print(stock.symbol, " ", end="")
+    print("]")
+    symbol = input("Which stock do you want to delete: ").upper()
+    found = False
+    i = 0
+    for stock in stock_list:
+        if stock.symbol == symbol:
+          found = True
+          stock_list.pop(i)
+        i = i + 1
+    if found == True:
+        print("Deleted", symbol)
+    else:
+        print("Symbol not found")
+    _=input("Press enter to continue")
     
     
 # List stocks being tracked
 def list_stocks(stock_list):
-    print("This method is under construction")
-    
+    print("Stock list ----")
+    print("SYMBOL\t\tNAME\t\tSHARES")
+    print("======================================")
+    for stock in stock_list:
+        print(stock.symbol," " * (14-len(stock.symbol)),stock.name," " * (14-len(stock.name)),stock.shares)
+    print()
+    _=input("Press enter to continue")
+
     # Add Daily Stock Data
 def add_stock_data(stock_list):
-   print("This method is under construction")
+    print("Add Daily Stock Data ----")
+    print("Stock List: [",end="")
+    for stock in stock_list:
+        print(stock.symbol," ",end="")
+    print("]")
+    symbol = input("Which stock do you want to use?: ").upper()
+    found = False
+    for stock in stock_list:
+        if stock.symbol == symbol:
+            found = True
+            current_stock = stock
+    if found == True:
+        print("Ready to add data for: ",symbol)
+        print("Enter Data Separated by Commas - Do Not use Spaces")
+        print("Enter a Blank Line to Quit")
+        print("Enter Date,Price,Volume")
+        print("Example: 8/28/20,47.85,10550")
+        data = input("Enter Date,Price,Volume: ")
+        while data != "":
+            date, price, volume = data.split(",")
+            daily_data = DailyData(date,float(price),float(volume))
+          
+            current_stock.add_data(daily_data)
+            data = input("Enter Date,Price,Volume: ")
+        print("Date Entry Complete")
+    else:
+        print("Symbol Not Found ***")
+    _ = input("Press Enter to Continue ***")
+
     
 def investment_type(stock_list):
     print("This method is under construction")
