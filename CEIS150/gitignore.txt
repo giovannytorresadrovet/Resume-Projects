@@ -1,0 +1,9 @@
+/.~lock.CEIS150 Project Guide Module 2 v3.docx#
+/CEIS150 Project Guide Module 2 v3.docx
+/CEIS150 Project Template Module Deliverable Week 2 v2.pptx
+/CEIS150 Week 2 - Giovanny Torres Adrovet.pptx
+/SEC290 CP Module 2 - Giovanny Torres Adrovet.pptx
+/StockClassDiagram.drawio
+/Stock_DailyDataDiagram.png
+/code.png
+/coderesult.png
