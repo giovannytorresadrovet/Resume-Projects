@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created: 19 MAY 2024
-Updated: 26 MAY 2024
+Updated: 02 JUN 2024
 co-author: Giovanny Torres Adrovet (D41250849)
 """
 from datetime import datetime
@@ -124,23 +124,108 @@ def investment_type(stock_list):
 
 # Function to create stock chart
 def display_stock_chart(stock_list,symbol):
-    print("This method is under construction")
+    date = []
+    price = []
+    volume = []
+    company = ""
+    for stock in stock_list:
+        if stock.symbol == symbol:
+            company = stock.name
+            for daily_Data in stock.DataList:
+                date.append(daily_Data.date)
+                price.append(daily_Data.close)
+                volume.append(daily_Data.volume)
+    plt.plot(date, price)
+    plt.xlabel('Date')
+    plt.ylabel('Price')
+    plt.title(company)
+    plt.show()
 
 # Display Chart
 def display_chart(stock_list):
-    print("This method is under construction")
-  
+    print("Stock List: [ ", end="")
+    for stock in stock_list:
+        print(stock.symbol, " ", end="")
+    print("]")
+    symbol = input("Pick stock for a chart: ").upper()
+    found = False
 
-
-                
+    for stock in stock_list:
+        if stock.symbol == symbol:
+          found = True
+          current_stock = stock
+    if found == True:
+        display_stock_chart(stock_list, current_stock.symbol)
+    else:
+        print("Symbol not found")
+        _=input("Press enter to continue: ")
+               
  # Get price and volume history from Yahoo! Finance using CSV import.
 def import_stock_csv(stock_list):
-    print("This method is under construction")
-    
+    print("\nAdd historical data to a stock in the stock list")
+    print("Stock List: [ ", end="")
+    for stock in stock_list:
+        print(stock.symbol, " ", end="")
+    print("]")
+    symbol = input("Enter stock symbol: ").upper()
+    filename = input("Enter the file name: ")
+    for stock in stock_list:
+        if stock.symbol == symbol:
+            with open(filename, newline = '') as stockdata:
+                datareader = csv.reader(stockdata, delimiter= ',')
+                next(datareader)
+                for row in datareader:
+                    daily_data = DailyData(str(row[0]), float(row[4]), float(row[6]))
+                    stock.add_data(daily_data)
+    display_report(stock_list)
+
    # Display Report 
 def display_report(stock_list):
-    print("This method is under construction")
+    print("Stock Report ----")
+    for stock in stock_list:
+        print("Report for: ", stock.symbol, stock.name)
+        print("Shares: ", stock.shares)
+        #Variable initialization
+        count = 0
+        price_total = 0
+        volume_total = 0
+        lowPrice = 999999999.99
+        highPrice = 0.0
+        lowVolume = 999999999.99
+        highVolume = 0.0
+
+        for daily_data in stock.DataList:
+            count = count + 1
+            price_total = price_total + daily_data.close
+            volume_total = volume_total + daily_data.volume
+            if daily_data.close < lowPrice:
+                lowPrice = daily_data.close
+            if daily_data.close > highPrice:
+                highPrice = daily_data.close
+            if daily_data.volume < lowVolume:
+                lowVolume = daily_data.volume
+            if daily_data.volume > highVolume:
+                highVolume = daily_data.volume
+        
+            priceChange = highPrice - lowPrice
+            print(daily_data.date, daily_data.close, daily_data.volume)
+        if count >0:
+            print("Summary ----")
+            print("Low Price: ${:,.2f}".format(lowPrice))
+            print("High Price: ${:,.2f}".format(highPrice))
+            print("Average Price: ${:,.2f}".format(price_total/count))
+            print("Low Volume: ", lowVolume)
+            print("High Volume: ", highVolume)
+            print("Average Volume: ${:,.2f}".format(volume_total/count))
+            print("Change in Price: ${:,.2f}".format(priceChange))
+            print("Profit/Loss: ${:,.2f}".format(priceChange * stock.shares))
+        else:
+            print("**** No daily history")
+        print("\n\n\n")
+    print("--- Report Complete ---")
+    _=input("Press Enter to Continue: ")
     
+
 def main_menu(stock_list):
     option = ""
     while True:
