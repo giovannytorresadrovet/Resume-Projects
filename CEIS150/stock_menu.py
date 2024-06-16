@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created: 19 MAY 2024
-Updated: 02 JUN 2024
+Updated: 15 JUN 2024
 co-author: Giovanny Torres Adrovet (D41250849)
 """
 from datetime import datetime
