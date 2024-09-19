@@ -1,5 +1,3 @@
-
-
 import json
 
 def add_expense(expenses, description, amount):
